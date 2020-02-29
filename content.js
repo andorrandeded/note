@@ -43,9 +43,9 @@ if(reaseat==""){
 console.log("nothing in here");
 document.getElementById("pass").placeholder="password  farst"
 }else{
-document.querySelector("body > img").style="display: initial";
+document.querySelector("body > img.gifimage").style="display: initial";
 setTimeout (function(){
-document.querySelector("body > img").style="display: none";
+document.querySelector("body > img.gifimage").style="display: none";
 
 },700);
 Ref = firebase.database().ref("people's notes").child(reaseat);
