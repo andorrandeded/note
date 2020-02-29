@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<title>best note ever</title>
+<head>
+
+</head>
+<style>
+.input2{
+font: inherit;
+margin: 0;
+overflow: visible;
+width: 15%;
+padding: 12px 20px;
+box-sizing: border-box;
+border: 3px solid #00e2ff;
+transition: 0.5s;
+}
+.input1{
+font: inherit;
+margin: 0;
+overflow: visible;
+width: 100%;
+padding: 12px 20px;
+box-sizing: border-box;
+border: 3px solid #f00;
+transition: 0.5s;
+
+}
+
+body{
+background-image: url('https://wallpaperaccess.com/full/622523.jpg');
+
+
+}
+
+
+
+.button1{
+box-sizing: inherit;
+font: inherit;
+overflow: visible;
+-webkit-appearance: button;
+background-color: #05c9e8;
+border: none;
+color: white;
+padding: 15px 32px;
+text-decoration: none;
+margin: 4px 2px;
+width: 15%;
+}
+
+
+
+
+
+
+.button2{
+box-sizing: inherit;
+font: inherit;
+overflow: visible;
+-webkit-appearance: button;
+background-color: #05c9e8;
+border: none;
+color: white;
+padding: 15px 32px;
+text-decoration: none;
+margin: 4px 2px;
+width: 15%;
+}
+.image{
+
+position: absolute;
+   top: 2%;
+   left: 40%;
+width: 10%;
+margin-left: 0%;
+display:none;
+
+}
+</style>
+<body>
+<img class="image"src='https://img.devrant.com/devrant/rant/r_228415_fDWmt.gif'/>
+<script src="https://www.gstatic.com/firebasejs/3.6.3/firebase.js"></script>
+
+<textarea required="required" placeholder="write things  " id="text" class="input1"style="margin: 0px; width: 1255px; height: 
+
+146px;"></textarea>
+</p><input id="pass" class="input2" required="required" placeholder="generate a password  "></input>
+</p><button class="button1" onclick="saveit()">save </button>
+</p><button class="button2" onclick="reseatit()">reseat note</button>
+<script>
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyCywpnEYimtpM82G5PtgkI4vvBxyIVKAXw",
+    authDomain: "myfarst-8163c.firebaseapp.com",
+    databaseURL: "https://myfarst-8163c.firebaseio.com",
+    projectId: "myfarst-8163c",
+    storageBucket: "myfarst-8163c.appspot.com",
+    messagingSenderId: "398712145622",
+    appId: "1:398712145622:web:7eadea70d4e28009172b77",
+    measurementId: "G-HQMESHXVLP"
+  };
+firebase.initializeApp(firebaseConfig);
+
+
+
+
+
+
+
+
+
+
+function saveit() {
+not=document.getElementById("text").value;
+reaseat=document.getElementById("pass").value;
+if(not== ""||reaseat ==""){
+document.getElementById("text").placeholder="can not be impty"
+document.getElementById("pass").placeholder="generate a password in here"
+}else{
+
+
+Ref = firebase.database().ref("people's notes").child(reaseat);
+Ref.set(not);
+
+
+
+
+}
+}
+function reseatit(){
+reaseat=document.getElementById("pass").value;
+
+if(reaseat==""){
+console.log("nothing in here");
+document.getElementById("pass").placeholder="password  farst"
+}else{
+document.querySelector("body > img").style="display: initial";
+setTimeout (function(){
+document.querySelector("body > img").style="display: none";
+
+},700);
+Ref = firebase.database().ref("people's notes").child(reaseat);
+Ref.once("value").then(function(snapshot) {
+ 
+var  data = snapshot.val(); 
+if(data==null){
+console.log("code4545");
+}else{
+
+var  data = snapshot.val(); 
+document.getElementById("text").value=data;
+}
+
+});
+}
+}
+</script>
+
+
+</script>
+</body>
+</html>
